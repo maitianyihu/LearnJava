@@ -1,5 +1,8 @@
 package pers.wsy.learnJava.moduleOne;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class HelloWorld {
     public static void main(String[] args) {
         System.out.println("Hello World");
@@ -20,7 +23,7 @@ public class HelloWorld {
 
 //同一个源文件中只能有一个 public class
 class Cat {
-
+    private static final String ANIMALNAME = "猫";//仅仅类内部访问
     String name;
     int age;
 
@@ -30,6 +33,14 @@ class Cat {
     }
 
     void bark() {
-        System.out.println(this.name + "喵喵喵~" + "今年" + this.age + "岁");
+        String formatStr = String.format("%s 喵喵喵，今年%d岁了，属于%s科动物",this.name,age,ANIMALNAME);
+        System.out.println(formatStr);
+        //与上面输出是同样效果
+        System.out.printf("%s 喵喵喵，今年%d岁了，属于%s科动物",this.name,age,ANIMALNAME);
+        //当前时间
+        Date now = new Date();
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        System.out.println("现在时间是"+formatDate.format(now));
+
     }
 }
