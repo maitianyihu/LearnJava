@@ -11,6 +11,12 @@ public class ExceptionTest {
         //处理方式1 继续上抛，抛给调用者，最终到JVM那里去 main方法后添加throw ClassNotFountException
         // 处理方式2 捕捉
         try {
+            login("");
+        } catch (UserInfoErrorException e) {
+            e.printStackTrace();
+        }
+
+        try {
             doSome();
         } catch (ClassNotFoundException e){
             e.printStackTrace();//打印栈信息
@@ -24,4 +30,11 @@ public class ExceptionTest {
     public static void doSome() throws ClassNotFoundException {
         System.out.println("调用我的对象必须处理编译时异常ClassNotFoundException");
     }
+
+    public static void  login(String name) throws UserInfoErrorException{
+        if(null == name || name.length()==0){
+            throw new UserInfoErrorException("用户名错误，登录失败");
+        }
+    }
+
 }

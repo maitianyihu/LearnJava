@@ -5,7 +5,8 @@ import pers.wsy.learnJava.moduleOne.ProtectSuperClass;
 public class ProtectSubClass extends ProtectSuperClass {
 
     public void askSupperProtectedMethod(){
-        super.test();
+        ProtectSuperClass superClassInstance = new ProtectSuperClass();
+//        superClassInstance.test();//在不同的包下，实例化的对象无法访问protect修饰的方法。
     }
 
     @Override
